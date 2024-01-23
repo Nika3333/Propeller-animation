@@ -1,0 +1,273 @@
+/* *, body, :root */
+    *, *::before, *::after {
+        box-sizing: border-box;
+    }
+
+    :root {
+        --black: black;
+        --white: white;
+        --prop-color: rgb(17, 115, 176);
+        --wings-light-yellow-shadow: rgb(212, 169, 118);
+        --wings-light-blue-shadow: rgb(140, 125, 224);
+    }
+
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: var(--black);
+        color: var(--white);
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        overflow-x: hidden;
+    }
+
+/* Wrapper */
+    .wrapper {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+/* Propeller */
+    .propeller-wrapper {
+        height: 50px;
+        width: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 100%;
+        box-shadow: 0 0 100px 100px rgb(59, 32, 59);
+        position: relative;
+    }
+
+    .propeller-center-circle {
+        height: 50px;
+        width: 50px;
+        border-radius: 100%;
+        position: relative;
+        background-color: rgb(6, 53, 119);
+        z-index: 1;
+        box-shadow: 
+            inset rgb(157, 126, 88) -3px -3px 5px,
+            inset rgb(94, 84, 149) 4px 4px 5px; 
+    }
+
+    .wing {
+        width: 25px;
+        height: 200px;
+        border-radius: 50% 50% 0 0;
+        background-color: var(--prop-color);
+        position: absolute;
+    }
+    .one {
+        transform: rotate(0deg) translateY(-50%);
+        box-shadow: 
+            inset rgba(0, 0, 0, 0.7) 0 -30px 10px,
+            inset var(--wings-light-yellow-shadow) -3px -3px 5px,
+            inset var(--wings-light-blue-shadow) 4px 4px 5px;
+    }
+    .two {
+        transform: rotate(125deg) translateY(-50%);
+        box-shadow: 
+            inset rgba(0, 0, 0, 0.7) 0 -30px 10px,
+            inset var(--wings-light-yellow-shadow) -3px -3px 5px,
+            inset var(--wings-light-blue-shadow) 4px 4px 5px;
+    }
+    .three {
+        transform: rotate(235deg) translateY(-50%);
+        box-shadow: 
+            inset rgba(0, 0, 0, 0.7) 0 -30px 10px,
+            inset var(--wings-light-blue-shadow) -3px -3px 5px,
+            inset var(--wings-light-yellow-shadow) 4px 4px 5px;
+    }
+
+/* Range changer */
+    .range-changer-wrapper {
+        width: 100px;
+        height: 700px;
+        border-radius: 20px;
+        background-color: var(--wings-light-blue-shadow);
+        border: 5px solid var(--white);
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .max-num {
+        font-size: 30px;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .current-num-wrapper {
+        height: 83.5%;
+        width: 100%;
+        position: absolute;
+        top: 50.2%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    
+    .current-num {
+        position: absolute;
+        bottom: 0%;
+        left: 0%;
+        transform: translate(-60%, 50%) rotate(45deg);
+        z-index: 1;
+        background-color: var(--wings-light-yellow-shadow);
+        width: 50px;
+        height: 50px;
+        border-radius: 100% 0% 100% 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: var(--black) 2px solid;
+        margin: 0;
+    }
+    
+    .current-num .number {
+        transform: rotate(-45deg);
+        font-size: 20px;
+    }
+
+    .min-num {
+        font-size: 30px;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .input-range-wrapper {
+        height: 90%;
+        width: 60%;
+        position: relative;
+    }
+
+    input[type="range"] {
+        -webkit-appearance: none;
+        appearance: none;
+
+        height: 5px;
+        width: 600px;
+        border-radius: 100px;
+        
+
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(-90deg);
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+
+        width: 25px;
+        height: 25px;
+        border-radius: 100%;
+        background-color: var(--white);
+        border: 4px solid var(--wings-light-yellow-shadow);    
+     }
+
+/* Media */
+    @media screen and (max-width: 758px) {
+        .wrapper {
+            flex-direction: column;
+        }
+
+        .range-changer-wrapper {
+            width: 500px;
+            height: 100px;
+        }
+
+        .min-num {
+            left: 5%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .max-num {
+            top: 50%;
+            left: 95%;
+            transform: translate(-100%, -50%);
+        }
+
+        .current-num-wrapper {
+            width: 55%;
+        }
+
+        .current-num {
+            position: absolute;
+            top: 0%;
+            left: 50%;
+            transform: translate(-50%, -80%) rotate(45deg);
+            width: 50px;
+            height: 50px;
+            border-radius: 100% 100% 0% 100%;
+        }
+        
+        .current-num .number {
+            transform: rotate(-45deg);
+            font-size: 20px;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(0deg);
+        }
+    }
+
+    @media screen and (max-width: 500px) {
+
+        .range-changer-wrapper {
+            width: 300px;
+        }
+
+        .max-num {
+            left: 100%;
+        }
+    }
+
+    @media screen and (max-width: 350px) {
+
+        .range-changer-wrapper {
+            width: 250px;
+            height: 80px;
+        }
+
+        .current-num-wrapper {
+            height: 70px;
+            width: 50%;
+        }
+
+        .max-num {
+            left: 100%;
+        }
+
+        .propeller-wrapper {
+            height: 35px;
+            width: 35px;
+            box-shadow: 0 0 50px 50px rgb(59, 32, 59);
+        }
+    
+        .propeller-center-circle {
+            height: 35px;
+            width: 35px;
+        }
+    
+        .wing {
+            height: 125px;
+            width: 20px;
+        }
+    }
+
